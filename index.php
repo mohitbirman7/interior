@@ -139,35 +139,7 @@
         margin-right: 3px;
     }
 
-    .hero-floating-contact {
-        position: fixed !important;
-        right: 25px !important;
-        bottom: 120px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px !important;
-        z-index: 99999 !important;
-    }
-
-    .hero-contact-btn {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        color: #fff !important;
-        text-decoration: none;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
-        transition: transform .2s ease;
-    }
-
-    .hero-contact-btn:hover {
-        transform: translateY(-3px);
-    }
-
-    .hero-contact-call { background: var(--hero-theme); }
-    .hero-contact-wa { background: #25d366; }
-
+    
     /* =========================
        RESPONSIVE
        ========================= */
@@ -210,15 +182,7 @@
             justify-content: center;
         }
 
-        .hero-floating-contact {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-           z-index: 9999999 !important;
-        }
+        
     }
 
     @media (max-width: 575.98px) {
@@ -235,7 +199,7 @@
             font-size: 15px;
         }
     }
-</style>
+</style><body class="home-page">
 
 <section class="custom-hero" aria-label="Interior design consultation">
     <div class="custom-hero-inner">
@@ -266,18 +230,7 @@
             <!-- RIGHT: CONSULTATION FORM (pulled in from form.php) -->
             <div>
                 <?php include "form.php"; ?>
-
-                <div class="hero-floating-contact">
-                    <a class="hero-contact-btn hero-contact-call"
-                       href="tel:+919911634311" aria-label="Call us">
-                        <i class="fas fa-phone-alt"></i>
-                    </a>
-                    <a class="hero-contact-btn hero-contact-wa"
-                       href="https://wa.me/918813904904" target="_blank" rel="noopener"
-                       aria-label="Chat on WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
+   
             </div>
         </div>
     </div>
@@ -1302,6 +1255,11 @@
         </div>
     </div> -->
     <!-- Team End -->
+
+
+
+
+    
 
 <!--  contact us start-->
 

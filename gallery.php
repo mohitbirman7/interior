@@ -1,5 +1,5 @@
 <?php include "navbar.php" ?>
-
+<body class="gallery-page">
 <!-- ================= HERO START ================= -->
 <div class="container-fluid pb-5 bg-primary hero-header">
     <div class="container py-5">
@@ -186,7 +186,7 @@
     <div class="sbgal-lightbox-caption" id="sbgalLightboxCaption"></div>
 </div>
 <!-- ================= GALLERY END ================= -->
-
+</body>
 
 <style>
 /* ================= GALLERY (namespaced: sbgal-) ================= */

@@ -84,7 +84,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="gallery.php" class="nav-link active">Gallery</a>
+                            <a href="gallery.php" class="nav-link">Gallery</a>
                         </li>
 
                         <li class="nav-item">
@@ -93,7 +93,7 @@
 
                         <!-- CTA Button (professional touch) -->
                         <li class="nav-item pro-cta-item">
-                            <a href="contact.php" class="pro-cta-btn">
+                            <a href="contact.php" class="pro-cta-btn"  style="color: #ffffff !important;">
                                 Get a Quote
                                 <i class="bi bi-arrow-right"></i>
                             </a>
@@ -239,11 +239,11 @@
 }
 
 .pro-nav .nav-link:hover {
-    color: #b8860b !important;
+    color: #0D6B68 !important;
 }
 
 .pro-nav .nav-link.active {
-    color: #b8860b !important;
+    color: #0D6B68 !important;
     font-weight: 600;
 }
 
@@ -291,8 +291,8 @@
 
 .pro-cta-btn:hover {
     color: #0f0f0f !important;
-    background: linear-gradient(135deg, #e0b84a 0%, #b8860b 100%);
-    border-color: #b8860b;
+    background: linear-gradient(135deg, #242424 0%, #3e3e3e 100%);
+    border-color: #b0b0b0;
     transform: translateY(-2px);
     box-shadow: 0 8px 22px rgba(184, 134, 11, 0.4);
 }
@@ -336,12 +336,12 @@
 }
 
 .pro-toggler:hover {
-    border-color: #b8860b;
+    border-color: #0D6B68;
     background: rgba(184, 134, 11, 0.06);
 }
 
 .pro-toggler:hover span {
-    background: #b8860b;
+    background: #0D6B68;
 }
 
 /* Open state — X */
@@ -511,6 +511,24 @@
         transition: none !important;
         animation: none !important;
     }
+}
+/* Active page color */
+.home-page .pro-nav a[href="index.php"],
+.about-page .pro-nav a[href="about.php"],
+.service-page .pro-nav a[href="service.php"],
+.gallery-page .pro-nav a[href="gallery.php"],
+.contact-page .pro-nav a[href="contact.php"] {
+    color: #0D6B68 !important;
+    font-weight: 600;
+}
+
+.home-page .pro-nav a[href="index.php"]::before,
+.about-page .pro-nav a[href="about.php"]::before,
+.service-page .pro-nav a[href="service.php"]::before,
+.gallery-page .pro-nav a[href="gallery.php"]::before,
+.contact-page .pro-nav a[href="contact.php"]::before {
+    width: calc(100% - 36px);
+    background: #0D6B68;
 }
 </style>
 <!-- ============================================

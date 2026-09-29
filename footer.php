@@ -68,11 +68,12 @@
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Our Services</h5>
-                    <a class="btn btn-link" href="#">Interior Design</a>
-                    <a class="btn btn-link" href="#">Project Planning</a>
-                    <a class="btn btn-link" href="#">Renovation</a>
-                    <a class="btn btn-link" href="#">Implement</a>
-                    <a class="btn btn-link" href="#">Landscape Design</a>
+                    <a class="btn btn-link" href="service.php">Modular Kitchen</a>
+                    <a class="btn btn-link" href="service.php">Modular Wardrobe</a>
+                    <a class="btn btn-link" href="service.php">Living Room</a>
+                    <a class="btn btn-link" href="service.php">Bedroom</a>
+                    <a class="btn btn-link" href="service.php">Bathroom</a>
+                    <a class="btn btn-link" href="service.php">TV Unit</a>
                 </div>
             </div>
         </div>
@@ -87,7 +88,7 @@
                             <a href="index.php">Home</a>
                             <a href="about.us">About Us</a>
                             <a href="contact.php">Contact Us</a>
-                            <a href="#">Projects</a>
+                            <a href="gallery.php">Projects</a>
                         </div>
                     </div>
                 </div>
@@ -95,6 +96,48 @@
         </div>
     </div>
     <!-- Footer End -->
+
+
+    <!-- Glass Floating Buttons -->
+<section class="floating-contact">
+  <a href="tel:+919876543210" class="fbtn phone">
+    <i class="bi bi-telephone-fill"></i>
+  </a>
+
+  <a href="https://wa.me/919876543210" target="_blank" class="fbtn whatsapp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+</section>
+
+<style>
+.floating-contact{
+  position:fixed;right:18px;bottom:140px;z-index:9999;
+  display:flex;flex-direction:column;gap:12px
+}
+.fbtn{
+  width:50px;height:50px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;
+  text-decoration:none;font-size:20px;
+  background:rgba(255,255,255,.16);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
+  transition:.3s
+}
+.fbtn:hover{transform:scale(1.12) translateY(-3px);color:#fff}
+.phone{background:rgba(30,30,30,.55)}
+.whatsapp{background:rgba(37,211,102,.65)}
+.whatsapp{animation:pulse 2s infinite}
+
+@keyframes pulse{
+  50%{box-shadow:0 0 0 8px rgba(37,211,102,.08),0 8px 25px rgba(0,0,0,.2)}
+}
+@media(max-width:576px){
+  .floating-contact{right:12px;bottom:75px;gap:9px}
+  .fbtn{width:45px;height:45px;font-size:18px}
+}
+</style>
 
 
     <!-- Back to Top -->
@@ -111,3 +154,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+
+

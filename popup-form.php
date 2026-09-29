@@ -28,40 +28,52 @@ if ($pfStandalone): ?>
 <style>
     .pf-overlay { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(20,12,8,.62); backdrop-filter: blur(4px); opacity: 0; visibility: hidden; transition: opacity .35s, visibility 0s .35s; }
     .pf-overlay.is-open { opacity: 1; visibility: visible; transition: opacity .35s; }
-    .pf-modal { position: relative; display: grid; grid-template-columns: 1fr 1.05fr; width: 100%; max-width: 900px; max-height: calc(100vh - 32px); overflow: hidden; background: #fff; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.45); outline: 0; opacity: 0; transform: translateY(34px) scale(.95); transition: transform .55s cubic-bezier(.2,.9,.25,1.15), opacity .4s; }
+    .pf-modal { position: relative; display: grid; grid-template-columns: 1fr 1.05fr; width: 100%; max-width: 750px; max-height: calc(100vh - 32px); overflow: hidden; background: #fff; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.45); outline: 0; opacity: 0; transform: translateY(34px) scale(.95); transition: transform .55s cubic-bezier(.2,.9,.25,1.15), opacity .4s; }
     .pf-overlay.is-open .pf-modal { opacity: 1; transform: none; }
 
     .pf-close { position: absolute; top: 12px; right: 12px; z-index: 5; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: #fff; color: #444; font-size: 26px; line-height: 40px; text-align: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.25); transition: transform .3s, color .3s; }
     .pf-close:hover { transform: rotate(90deg); color: #000; }
 
-    .pf-left { position: relative; overflow: hidden; min-height: 540px; padding: 36px 30px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; background: #3a2b22; }
-    .pf-bg { position: absolute; inset: 0; background: url(img/kitchenA1.png) center / cover no-repeat; }
-    .pf-overlay.is-open .pf-bg { animation: pfZoom 9s ease-out both; }
+    /* Change 1: Added background image directly to left side */
+    .pf-left { position: relative; overflow: hidden; min-height: 380px; padding: 24px 20px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; background: #000 url('img/interior1.jpeg') center / cover no-repeat; }
+    
+    /* Image Slider CSS */
+    .pf-bg-slider { position: absolute; inset: 0; z-index: 0; }
+    .pf-overlay.is-open .pf-bg-slider { animation: pfZoom 9s ease-out both; }
+    .pf-slide { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; opacity: 0; animation: pfSlideFade 8s infinite; }
+    .pf-slide:nth-child(1) { animation-delay: 0s; }
+    .pf-slide:nth-child(2) { animation-delay: 2s; }
+    .pf-slide:nth-child(3) { animation-delay: 4s; }
+    .pf-slide:nth-child(4) { animation-delay: 6s; }
+    
+    /* Change 2: Perfect overlap timing */
+    @keyframes pfSlideFade { 0% { opacity: 0; } 12.5% { opacity: 1; } 25% { opacity: 1; } 37.5% { opacity: 0; } 100% { opacity: 0; } }
+    
     .pf-left::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(20,12,8,.65), rgba(20,12,8,.05) 45%, rgba(20,12,8,.72)); }
     .pf-copy, .pf-call { position: relative; z-index: 2; }
     .pf-kicker { display: block; font-size: 1.15rem; font-weight: 300; letter-spacing: .04em; }
-    .pf-big { display: block; margin-top: 4px; font-family: Georgia, "Times New Roman", serif; font-size: 2.7rem; line-height: 1.1; font-weight: 600; }
+    .pf-big { display: block; margin-top: 4px; font-family: Georgia, "Times New Roman", serif; font-size: 2.2rem; line-height: 1.1; font-weight: 600; }
     .pf-call { display: inline-flex; align-items: center; gap: 10px; width: fit-content; padding: 10px 18px; border-radius: 40px; background: rgba(255,255,255,.18); backdrop-filter: blur(6px); color: #fff; font-weight: 600; }
     .pf-call:hover { color: #fff; background: rgba(255,255,255,.3); }
 
-    .pf-right { padding: 46px 40px 30px; overflow-y: auto; display: flex; flex-direction: column; justify-content: center; }
-    .pf-title { margin: 0 0 6px; font-size: 1.9rem; font-weight: 700; color: #111; }
-    .pf-sub { margin: 0 0 24px; color: #6b6b6b; font-weight: 500; }
-    .pf-field { position: relative; margin-bottom: 14px; }
+    .pf-right { padding: 20px 25px; overflow-y: hidden; display: flex; flex-direction: column; justify-content: center; }
+    .pf-title { margin: 0 0 6px; font-size: 1.5rem; font-weight: 700; color: #111; }
+    .pf-sub { margin: 0 0 12px; color: #6b6b6b; font-weight: 500; }
+    .pf-field { position: relative; margin-bottom: 8px; }
     .pf-field i { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #9a9a9a; pointer-events: none; transition: color .25s; }
-    .pf-field.pf-area i { top: 22px; transform: none; }
+    .pf-field.pf-area i { top: 16px; transform: none; }
     .pf-field:focus-within i { color: #222; }
-    .pf-input { display: block; width: 100%; padding: 15px 16px 15px 46px; border: 1.5px solid #e2e2e2; border-radius: 8px; background: #fafafa; color: #222; font: inherit; transition: border-color .25s, box-shadow .25s, background .25s; }
+    .pf-input { display: block; width: 100%; padding: 10px 12px 10px 40px; border: 1.5px solid #e2e2e2; border-radius: 8px; background: #fafafa; color: #222; font: inherit; transition: border-color .25s, box-shadow .25s, background .25s; }
     .pf-input:focus { outline: 0; border-color: #222; background: #fff; box-shadow: 0 0 0 4px rgba(0,0,0,.06); }
     .pf-input.pf-invalid { border-color: #c0392b; background: #fff6f5; }
-    textarea.pf-input { height: 78px; resize: none; }
+    textarea.pf-input { height: 55px; resize: none; }
     .pf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
     .pf-error { min-height: 22px; margin: 0 0 6px; color: #c0392b; font-size: .92rem; }
-    .pf-btn { position: relative; overflow: hidden; width: 100%; padding: 15px; font-weight: 700; letter-spacing: .03em; }
+    .pf-btn { position: relative; overflow: hidden; width: 100%; padding: 10px; font-weight: 700; letter-spacing: .03em; }
     .pf-btn::after { content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent); transform: skewX(-20deg); }
     .pf-btn:hover::after { left: 130%; transition: left .7s; }
     .pf-btn:disabled { opacity: .7; cursor: wait; }
-    .pf-note { margin: 14px 0 0; text-align: center; color: #8a8a8a; font-size: .85rem; }
+    .pf-note { margin: 10px 0 0; text-align: center; color: #8a8a8a; font-size: .85rem; }
 
     .pf-success { display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 10px; }
     .pf-success.show { display: flex; animation: pfUp .6s cubic-bezier(.2,.8,.2,1) both; }
@@ -72,15 +84,15 @@ if ($pfStandalone): ?>
     @keyframes pfZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
 
     @media (max-width: 767px) {
-        .pf-modal { grid-template-columns: 1fr; overflow-y: auto; max-height: calc(100vh - 24px); }
-        .pf-left { min-height: 160px; padding: 22px 20px; }
-        .pf-big { font-size: 1.9rem; }
-        .pf-kicker { font-size: 1rem; }
+        .pf-modal { grid-template-columns: 1fr; overflow: hidden; max-height: calc(100vh - 24px); }
+        .pf-left { min-height: 100px; padding: 15px; }
+        .pf-big { font-size: 1.5rem; }
+        .pf-kicker { font-size: 0.85rem; }
         .pf-call { display: none; }
-        .pf-right { padding: 26px 20px 22px; overflow: visible; }
-        .pf-title { font-size: 1.55rem; }
+        .pf-right { padding: 15px; overflow: hidden; }
+        .pf-title { font-size: 1.3rem; }
     }
-    @media (prefers-reduced-motion: reduce) { .pf-overlay, .pf-modal, .pf-anim, .pf-bg, .pf-close, .pf-success { transition: none !important; animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .pf-overlay, .pf-modal, .pf-anim, .pf-bg-slider, .pf-slide, .pf-close, .pf-success { transition: none !important; animation: none !important; } }
 </style>
 
 <div class="pf-overlay" id="pfOverlay" aria-hidden="true">
@@ -88,14 +100,21 @@ if ($pfStandalone): ?>
 
         <button type="button" class="pf-close" id="pfClose" aria-label="Close popup">&times;</button>
 
-        <!-- Left: image and headline -->
+        <!-- Left: image slider and headline -->
         <div class="pf-left">
-            <div class="pf-bg"></div>
-            <div class="pf-copy">
-                <span class="pf-kicker">Your Home Awaits</span>
-                <strong class="pf-big">Dream Kitchen</strong>
+            
+            <div class="pf-bg-slider">
+                <div class="pf-slide" style="background-image: url('img/interior1.jpeg');"></div>
+                <div class="pf-slide" style="background-image: url('img/interior3.jpeg');"></div>
+                <div class="pf-slide" style="background-image: url('img/interior5.jpeg');"></div>
+                <div class="pf-slide" style="background-image: url('img/interior10.jpeg');"></div>
             </div>
-            <a class="pf-call" href="tel:9911634311"><i class="fas fa-phone-alt"></i> Prefer to talk? Call 9911634311</a>
+
+            <!-- <div class="pf-copy">
+                <span class="pf-kicker">Your Home Awaits</span>
+                <strong class="pf-big">Live dreams</strong>
+            </div> -->
+            <!-- <a class="pf-call" href="tel:9911634311"><i class="fas fa-phone-alt"></i> Prefer to talk? Call 9911634311</a> -->
         </div>
 
         <!-- Right: form -->
@@ -127,7 +146,7 @@ if ($pfStandalone): ?>
                     <div class="pf-error" id="pfError" role="alert"></div>
 
                     <button type="submit" class="btn btn-primary pf-btn pf-anim" id="pfSubmit" style="--d:.58s">BOOK FREE CONSULTATION</button>
-                    <p class="pf-note pf-anim" style="--d:.65s">We use your details only to contact you about your enquiry.</p>
+                    <p class="pf-note pf-anim" style="--d:.65s">We use your details only to contact you about your enquiry, call now <b>+91 9911634311</b></p>
                 </form>
             </div>
 
@@ -142,7 +161,7 @@ if ($pfStandalone): ?>
 
 <script>
     (function () {
-        var DELAY = 5000;                      // popup opens 5 seconds after load
+        var DELAY = 2000;                      // popup opens 2 seconds after load
         var KEY = 'sbjPopupShown';             // remembered until the tab/site is closed
         var ENDPOINT = 'popup-enquiry.php';    // handler file (keep it next to your pages)
 

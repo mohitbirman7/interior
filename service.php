@@ -55,6 +55,7 @@
     }
     @media (prefers-reduced-motion: reduce) { .dz-panel, .dz-icon, .dz-ghost, .dz-body { transition: none !important; } }
 </style>
+<body class="service-page">
 
 <!-- Hero Start -->
 <div class="container-fluid pb-5 bg-primary hero-header">
@@ -173,7 +174,6 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
 

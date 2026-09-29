@@ -597,7 +597,7 @@
   }
 </style>
 </head>
-<body>
+<body class="about-page">
 
 
 
