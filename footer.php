@@ -134,7 +134,7 @@
   50%{box-shadow:0 0 0 8px rgba(37,211,102,.08),0 8px 25px rgba(0,0,0,.2)}
 }
 @media(max-width:576px){
-  .floating-contact{right:12px;bottom:75px;gap:9px}
+  .floating-contact{right:12px;bottom:140px;gap:9px}
   .fbtn{width:45px;height:45px;font-size:18px}
 }
 </style>
