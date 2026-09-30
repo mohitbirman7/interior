@@ -100,11 +100,11 @@
 
     <!-- Glass Floating Buttons -->
 <section class="floating-contact">
-  <a href="tel:+919876543210" class="fbtn phone">
+  <a href="tel:+919911634311" class="fbtn phone">
     <i class="bi bi-telephone-fill"></i>
   </a>
 
-  <a href="https://wa.me/919876543210" target="_blank" class="fbtn whatsapp">
+  <a href="https://wa.me/918813904904" target="_blank" class="fbtn whatsapp">
     <i class="bi bi-whatsapp"></i>
   </a>
 </section>
