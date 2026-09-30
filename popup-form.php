@@ -24,13 +24,15 @@ if ($pfStandalone): ?>
 <style>
     .pf-overlay { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(20,12,8,.62); backdrop-filter: blur(4px); opacity: 0; visibility: hidden; transition: opacity .35s, visibility 0s .35s; }
     .pf-overlay.is-open { opacity: 1; visibility: visible; transition: opacity .35s; }
-    .pf-modal { position: relative; display: grid; grid-template-columns: 0.8fr 1.2fr; width: 100%; max-width: 700px; max-height: 88vh; overflow: hidden; background: #fff; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.45); outline: 0; opacity: 0; transform: translateY(34px) scale(.95); transition: transform .55s cubic-bezier(.2,.9,.25,1.15), opacity .4s; }
+    .pf-modal { position: relative; display: grid; grid-template-columns: 1fr 1fr; width: 100%; max-width: 820px; max-height: 88vh; overflow: hidden; background: #fff; border-radius: 14px; box-shadow: 0 30px 80px rgba(0,0,0,.45); outline: 0; opacity: 0; transform: translateY(34px) scale(.95); transition: transform .55s cubic-bezier(.2,.9,.25,1.15), opacity .4s; }
     .pf-overlay.is-open .pf-modal { opacity: 1; transform: none; }
+    .pf-modal::before { content:""; position:absolute; inset:0; border-radius:16px; padding:1px; background:linear-gradient(135deg,rgba(33,106,98,.35),rgba(255,255,255,.8),rgba(33,106,98,.18)); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; z-index:6; }
+    .pf-modal { border-radius:16px; }
 
     .pf-close { position: absolute; top: 10px; right: 10px; z-index: 5; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50%; background: #fff; color: #444; font-size: 24px; line-height: 34px; text-align: center; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.25); transition: transform .3s, color .3s; }
     .pf-close:hover { transform: rotate(90deg); color: #000; }
 
-    .pf-left { position: relative; overflow: hidden; min-height: 300px; padding: 20px 16px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; background: #000 url('img/interior1.jpeg') center / cover no-repeat; }
+    .pf-left { position: relative; overflow: hidden; min-height: 430px; padding: 24px 20px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; background: #000 url('img/interior1.jpeg') center / cover no-repeat; }
     
     .pf-bg-slider { position: absolute; inset: 0; z-index: 0; }
     .pf-overlay.is-open .pf-bg-slider { animation: pfZoom 9s ease-out both; }
@@ -49,14 +51,19 @@ if ($pfStandalone): ?>
     .pf-call { display: inline-flex; align-items: center; gap: 10px; width: fit-content; padding: 10px 18px; border-radius: 40px; background: rgba(255,255,255,.18); backdrop-filter: blur(6px); color: #fff; font-weight: 600; }
     .pf-call:hover { color: #fff; background: rgba(255,255,255,.3); }
 
-    .pf-right { padding: 14px 16px; overflow-y: auto; display: flex; flex-direction: column; justify-content: center; }
+    .pf-right { padding: 20px 22px; overflow-y: auto; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(145deg,#ffffff,#f7faf9); }
 
     @keyframes pfUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
     @keyframes pfZoom { from { transform: scale(1.12); } to { transform: scale(1); } }
 
+    @media (max-width: 900px) {
+        .pf-modal { max-width: 760px; }
+        .pf-left, .pf-right { min-width: 0; }
+    }
+
     @media (max-width: 767px) {
         .pf-modal { grid-template-columns: 1fr; overflow: hidden; max-width: 420px; max-height: calc(100vh - 24px); }
-        .pf-left { min-height: 70px; padding: 12px; }
+        .pf-left { min-height: 120px; padding: 12px; }
         .pf-big { font-size: 1.5rem; }
         .pf-kicker { font-size: 0.85rem; }
         .pf-call { display: none; }
